@@ -18,9 +18,10 @@ before_install:
   - cat udacity-c3-deployment/kube.cfg | base64 --decode > ${HOME}/.kube/config
 
 install:
-#  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
-#  - docker push nazar0v/udacity-restapi-feed
-#  - docker push nazar0v/udacity-restapi-user
-#  - docker push nazar0v/udacity-frontend
-  - cat ${HOME}/.kube/config
-  - kubectl get pods
+  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
+  - docker push nazar0v/udacity-restapi-feed
+  - docker push nazar0v/udacity-restapi-user
+  - docker push nazar0v/udacity-frontend
+  - kubectl apply -f udacity-c3-deployment/backend-feed-deployment.yaml
+  - kubectl apply -f udacity-c3-deployment/backend-user-deployment.yaml
+  - kubectl apply -f udacity-c3-deployment/frontend-deployment.yaml

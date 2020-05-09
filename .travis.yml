@@ -15,7 +15,7 @@ before_install:
   - chmod +x ./kubectl
   - sudo mv ./kubectl /usr/local/bin/kubectl
   - mkdir ${HOME}/.kube
-  - echo $KUBECFG | base64 --decode > ${HOME}/.kube/config
+  - cat udacity-c3-deployment/kube.cfg | base64 --decode > ${HOME}/.kube/config
 
 install:
 #  - docker-compose -f udacity-c3-deployment/docker/docker-compose-build.yaml build --parallel
